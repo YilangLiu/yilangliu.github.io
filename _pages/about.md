@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "yilangniu is a stupid ass"
+title: "Yilang Liu "
 excerpt: "About me"
 author_profile: true
 redirect_from: 
