@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Dai Jiawei"
+title                    : "Yilang Liu"
 title_separator          : "-"
 name                     : &name "Your Name"
 description              : &description "personal description"
@@ -80,23 +80,23 @@ analytics:
 
 # Site Author
 author:
-  name             : "戴嘉伟"
+  name             : "Yilang Liu"
   avatar           : "yilingshu.png"
-  bio              : "Your biography for the left-hand sidebar"
-  location         : "Location"
-  employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "http://yourfullgooglescholarurl.com"
-  email            :
+  bio              : "Mechanical Engineering Student in Carnegie Mellon University"
+  location         : "Pennsylvania, US"
+  employer         : "Carnegie Mellon University"
+  pubmed           : 
+  googlescholar    : "https://scholar.google.com/citations?view_op=list_works&hl=en&authuser=1&user=yirVCdwAAAAJ&gmla=AJsN-F6bs7CTeHGArd0nCMcQ93HvNnYMt9y5PzuXuYY2cbdGN23O28Sdndqqu8utO-A6flXGEJQelufmi_3EwwXASWS8d0fUUnDRgglVjlHfBTT_UkTz5nww64jiITasVsc0FiDJAxeR"
+  email            : "yilangl@andrew.cmu.edu"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
   codepen          :
   dribbble         :
   flickr           :
-  facebook         :
+  facebook         : "https://facebook.com/liuyilang1997"
   foursquare       :
-  github           : "academicpages"
+  github           : "https://github.com/YilangLiu"
   google_plus      :
   keybase          :
   instagram        :
@@ -109,7 +109,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          : 
   vine             :
   weibo            :
   xing             :
