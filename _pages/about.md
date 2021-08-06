@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "来斗鱼93589，来了就有女朋友 "
+title: "About Yilang Liu"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
