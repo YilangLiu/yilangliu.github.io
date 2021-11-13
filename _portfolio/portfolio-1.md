@@ -1,6 +1,6 @@
 ---
 title: "3-D map construction and mapping for mobile robot using ZED 2i Camera"
-excerpt: "Remote controlling and mapping <br/><img src='/files/turtlebot.mp4'>"
+excerpt: "Remote controlling and mapping <br/><img src='/files/turtle.gif'>"
 collection: portfolio
 ---
 
