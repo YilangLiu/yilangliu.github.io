@@ -17,11 +17,11 @@ Education
 
 Research Experience 
 ======
-* Summer 2020 - Present: Research Assistant
+* 9/2020 - Present: Research Assistant
   * Carnegie Mellon University
   * Supervisor: Professor Amir Barati Farimani
   * Research included: 
-    * Humanoid Robot Locomotion Control 
+    * Humanoid Robot Locomotion Control
       * Modified the humanoid robot URDF file to identify the joints’ index and motion type
       * Parsed the original Motion Capture (Mocap) data from the CMU database and stored joints
       * Created a human skeleton using MuJoCo robot and visualized the motion trajectory in PyBullet
@@ -37,7 +37,26 @@ Research Experience
       * Customized architectures for both value and policy function approximators
       * Designed a reward function with an expected return of 100 based on both the current observations and constraints of the snake robot
       * Achieved 15% energy efficiency improvement using PPO and 10% speed increase in the simulation
-      
+* 12/2019 - 5/2020: Research Assistant 
+  * University of Cincinnati 
+  * Supervisor: Professor Janet Jiaxiang Dong 
+  * Research included:
+    * Designed a feasible structure that could help military soldiers to lift 100 pounds weight of bombs using SolidWorks and analyze the structural integrity using Ansys
+    * Integrated EMG sensors to detect biceps strength and recorded the real-time voltage when moving the arms
+    * Actuated the motor using PWM based on the data from the EMG sensor
+    * Performed 3D-printing to make non-standard components and learned how to troubleshoot 3D printer
+    * Applied Motion Studies to the exoskeleton model and conducted motion simulation using SolidWorks
+    * Built a prototype in a workshop and tested the performance
+* 20/2018 - 8/2019: Research Assistant
+  * Chongqing University 
+  * Supervisor: Professor Tao Huang 
+  * Research included:
+   * Wrote LabVIEW code for real-time collection of MPU9250 data (accelerometer, gyroscope, magnetometer, thermometer, etc.) with NI myRIO (Student Embedded Device)
+   * Achieved the control of brushless motors by using ESC (Electronic Speed Controller) and then the flight control of UAV by the output PWM signals from LabVIEW
+   * Applied Kalman filter and smoothing filter to the IMU data using C++ and calculate the real-time principal axis of UAV using quaternion
+   * Acquired dataset through real-time data collection and trained neural network model using SGD (stochastic gradient descent), MBGD (Mini-Batch Gradient Descent), and Adam (Adaptive Moment Estimation)
+   * Built physical UAV flying platform and completed real-time fault diagnosis in LabVIEW panel
+
 Professional Experience
 ======
 * Fall 2021: Teaching Assistant 
