@@ -4,4 +4,6 @@ excerpt: "Remote controlling and mapping <br/><img src='/files/turtle.gif'>"
 collection: portfolio
 ---
 
-This is an item in your portfolio. It can be have images or nice text. If you name the file .md, it will be parsed as markdown. If you name the file .html, it will be parsed as HTML. 
+We use turtlebot combined with Zed 2i Camera to control the robot. The SBC I am using is Nvidia Jetsion TX1. I use ROS to remotely control the robot and reconstruct the robot with the image
+![Editing a markdown file for a talk](/images/robot.png)
+![Editing a markdown file for a talk](/images/map.png)
