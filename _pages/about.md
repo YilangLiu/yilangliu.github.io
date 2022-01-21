@@ -12,3 +12,4 @@ I am a MS student in Mechanical Engineering Research program at the Carnegie Mel
 3D ORB SLAM and object detection for mobile robot 
 ![Editing a markdown file for a talk](/images/robot.png)
 ![Editing a markdown file for a talk](/files/YOLO.gif)
+![Editing a markdown file for a talk](/files/YOLO1.gif)
