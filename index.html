@@ -5,7 +5,7 @@
 
     <title>Yilang Liu</title>
 
-    <meta name="author" content="Yilang Li">
+    <meta name="author" content="Yilang Liu">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -23,13 +23,13 @@
                   Yilang Liu
                 </p>
                 <p>
-		I'm a principal research scientist at <a href="https://deepmind.google/">Google DeepMind</a> in San Francisco, where I lead a small team that mostly works on <a href="https://www.matthewtancik.com/nerf">NeRF</a>.
-		At Google I've worked on <a href="https://www.google.com/glass/start/">Glass</a>,  <a href="https://ai.googleblog.com/2014/04/lens-blur-in-new-google-camera-app.html">Lens Blur</a>, <a href="https://ai.googleblog.com/2014/10/hdr-low-light-and-high-dynamic-range.html">HDR+</a>, <a href="https://blog.google/products/google-ar-vr/introducing-next-generation-jump/">VR</a>, <a href="https://ai.googleblog.com/2017/10/portrait-mode-on-pixel-2-and-pixel-2-xl.html">Portrait Mode</a>, <a href="https://ai.googleblog.com/2020/12/portrait-light-enhancing-portrait.html">Portrait Light</a>, <a href="https://blog.google/products/maps/three-maps-updates-io-2022/">Maps</a>, and <a href="https://research.google/blog/bringing-3d-shoppable-products-online-with-generative-ai/">Shopping</a>.
-		I did my PhD at <a href="http://www.eecs.berkeley.edu/">UC Berkeley</a>, where I was advised by <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>.
-		I've received the <a href="https://www.thecvf.com/?page_id=413#YRA">PAMI Young Researcher Award</a>.
+		I'm a Ph.D. candidate in Mechanical Engineering at <a href="https://www.yale.edu/">Yale University</a>, advised by <a href="https://profiles.sydney.edu.au/ian.abraham">Prof. Ian Abraham</a>.
+		My research focuses on robotics, optimal control, and reinforcement learning, with an emphasis on sample-based control, visual policy learning, and legged locomotion.
+		Previously, I received my M.S. from <a href="https://www.cmu.edu/">Carnegie Mellon University</a> and dual B.E./B.S. degrees from <a href="http://english.cqu.edu.cn/">Chongqing University</a> and the <a href="https://www.uc.edu/">University of Cincinnati</a>.
+		I have also worked as a robotics intern at <a href="https://www.dexmate.ai/">Dexmate Inc.</a>
                 </p>
                 <p style="text-align:center">
-                  <a href="yilang.liu@yale.edu">Email</a> &nbsp;/&nbsp;
+                  <a href="mailto:yilang.liu@yale.edu">Email</a> &nbsp;/&nbsp;
                   <a href="data/Resume.pdf">CV</a> &nbsp;/&nbsp;
                   <a href="https://scholar.google.com/citations?user=yirVCdwAAAAJ&hl=en&oi=ao">Scholar</a> &nbsp;/&nbsp;
                   <a href="https://github.com/YilangLiu">Github</a>
@@ -45,32 +45,16 @@
               <td style="padding:16px;width:100%;vertical-align:middle">
                 <h2>Research</h2>
                 <p>
-                  I'm interested in computer vision, deep learning, generative AI, and image processing. Most of my research is about inferring the physical world (shape, motion, color, light, etc) from images, usually with radiance fields. Some papers are <span class="highlight">highlighted</span>.
+                  I'm interested in robotics, optimal control, reinforcement learning, and vision-based policy learning. My research develops sample-based and data-driven methods for robot control, with applications in legged locomotion, dexterous manipulation, and autonomous exploration.
                 </p>
               </td>
             </tr>
           </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-      <tr onmouseout="merf_stop()" onmouseover="merf_start()">
+      <tr>
         <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="one">
-            <div class="two" id='merf_image'><video  width=100% height=100% muted autoplay loop>
-            <source src="images/merf_after.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-            </video></div>
-            <img src='images/merf_before.jpg' width="160">
-          </div>
-          <script type="text/javascript">
-            function merf_start() {
-              document.getElementById('merf_image').style.opacity = "1";
-            }
-
-            function merf_stop() {
-              document.getElementById('merf_image').style.opacity = "0";
-            }
-            merf_stop()
-          </script>
+          <img src='images/circus_robot.gif' width="160">
         </td>
         <td style="padding:8px;width:80%;vertical-align:middle">
           <a href="https://merf42.github.io/">
@@ -79,7 +63,7 @@
           <br>
           <strong>Yilang Liu</strong>,
           <a href="https://haoxiangyou.github.io">Haoxiang You</a>,
-          <a href="https://profiles.sydney.edu.au/ian.abraham">Ian Abraham</a>,
+          <a href="https://profiles.sydney.edu.au/ian.abraham">Ian Abraham</a>
           <br>
           <em>ICRA</em>, 2026
           <br>
@@ -95,45 +79,57 @@
         </td>
       </tr>
 
-      <tr onmouseout="merf_stop()" onmouseover="merf_start()">
+      <tr>
         <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="one">
-            <div class="two" id='merf_image'><video  width=100% height=100% muted autoplay loop>
-            <source src="images/merf_after.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-            </video></div>
-            <img src='images/merf_before.jpg' width="160">
-          </div>
-          <script type="text/javascript">
-            function merf_start() {
-              document.getElementById('merf_image').style.opacity = "1";
-            }
-
-            function merf_stop() {
-              document.getElementById('merf_image').style.opacity = "0";
-            }
-            merf_stop()
-          </script>
+          <video width="160" muted autoplay loop playsinline>
+            <source src="images/dva.mp4" type="video/mp4">
+          </video>
         </td>
         <td style="padding:8px;width:80%;vertical-align:middle">
           <a href="https://merf42.github.io/">
-            <span class="papertitle">Sample-Based Hybrid Mode Control: Asymptotically Optimal Switching of Algorithmic and Non-Differentiable Control Modes</span>
+            <span class="papertitle">Accelerating Visual-Policy Learning through Parallel Differentiable Simulation</span>
+          </a>
+          <br>
+          <a href="https://haoxiangyou.github.io">Haoxiang You</a>,
+          <strong>Yilang Liu</strong>,
+          <a href="https://profiles.sydney.edu.au/ian.abraham">Ian Abraham</a>
+          <br>
+          <em>NeurIPS</em> (<span style="color:red;font-weight:bold;">Spotlight</span>), 2025
+          <br>
+          <a href="https://haoxiangyou.github.io/Dva_website/">project page</a>
+          /
+          <a href="https://arxiv.org/pdf/2505.10646">paper</a>
+          /
+          <a href="https://arxiv.org/abs/2505.10646">arXiv</a>
+          /
+          <a href="https://github.com/HaoxiangYou/D.VA">Code</a>
+          <p></p>
+          <p>
+            We proposed a computationally efficient algorithm for visual policy learning that leverages differentiable simulation and first-order analytical policy gradients.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="padding:16px;width:20%;vertical-align:middle">
+          <img src='images/snake.png' width="160">
+        </td>
+        <td style="padding:8px;width:80%;vertical-align:middle">
+          <a href="https://merf42.github.io/">
+            <span class="papertitle">An energy-saving snake locomotion gait policy obtained using deep reinforcement learning</span>
           </a>
           <br>
           <strong>Yilang Liu</strong>,
-          <a href="https://haoxiangyou.github.io">Haoxiang You</a>,
-          <a href="https://profiles.sydney.edu.au/ian.abraham">Ian Abraham</a>,
+          <a href="https://www.meche.engineering.cmu.edu/directory/bios/barati-farimani-amir.html">Amir Barati Farimani</a>
           <br>
-          <em>ICRA</em>, 2026
+          <em>Journal of Mechanisms and Robotics</em>, 2023 
           <br>
-          <a href="https://yilangliu.github.io/hybrid_mode_sampling/">project page</a>
+          <a href="https://asmedigitalcollection.asme.org/mechanismsrobotics/article/15/4/041007/1145341/An-Energy-Saving-Snake-Locomotion-Pattern-Learned?guestAccessKey=">paper</a>
           /
-          <a href="https://arxiv.org/pdf/2510.19074">paper</a>
-          /
-          <a href="https://arxiv.org/abs/2510.19074">arXiv</a>
+          <a href="https://arxiv.org/abs/2103.04511">arXiv</a>
           <p></p>
           <p>
-            We investigated a sample-based solution to the hybrid mode control problem across non-differentiable and algorithmic hybrid modes.
+            Developed a snake locomotion gait policy for energy-efficient control via deep reinforcement learning
           </p>
         </td>
       </tr>
