@@ -1,0 +1,76 @@
+{
+  "publications": [
+    {
+      "title": "Asymptotically Optimal Ergodic Coverage on Generalized Motion Fields",
+      "authors": [
+        "Christian Hughes",
+        "Yilang Liu",
+        "Yanis Lahrach",
+        "Julia Engdahl",
+        "Houston Warren",
+        "Darrick Lee",
+        "Fabio Ramos",
+        "Travis Miles",
+        "Ian Abraham"
+      ],
+      "venue": "RSS 2026",
+      "thumbnail": "images/sphero_example.png",
+      "selected": 1,
+      "award": "",
+      "links": {
+        "pdf": "https://arxiv.org/pdf/2605.13442",
+        "arxiv": "https://arxiv.org/abs/2605.13442"
+      }
+    },
+    {
+      "title": "Sample-Based Hybrid Mode Control: Asymptotically Optimal Switching of Algorithmic and Non-Differentiable Control Modes",
+      "authors": [
+        "Yilang Liu",
+        "Haoxiang You",
+        "Ian Abraham"
+      ],
+      "venue": "ICRA 2026",
+      "thumbnail": "images/circus_robot.gif",
+      "selected": 1,
+      "award": "",
+      "links": {
+        "pdf": "https://arxiv.org/pdf/2510.19074",
+        "arxiv": "https://arxiv.org/abs/2510.19074",
+        "project": "https://yilangliu.github.io/hybrid_mode_sampling/"
+      }
+    },
+    {
+      "title": "Accelerating Visual-Policy Learning through Parallel Differentiable Simulation",
+      "authors": [
+        "Haoxiang You",
+        "Yilang Liu",
+        "Ian Abraham"
+      ],
+      "venue": "NeurIPS 2025",
+      "thumbnail": "images/dva.mp4",
+      "selected": 1,
+      "award": "Spotlight",
+      "links": {
+        "pdf": "https://arxiv.org/pdf/2505.10646",
+        "arxiv": "https://arxiv.org/abs/2505.10646",
+        "code": "https://github.com/HaoxiangYou/D.VA",
+        "project": "https://haoxiangyou.github.io/Dva_website/"
+      }
+    },
+    {
+      "title": "An Energy-Saving Snake Locomotion Gait Policy Obtained Using Deep Reinforcement Learning",
+      "authors": [
+        "Yilang Liu",
+        "Amir Barati Farimani"
+      ],
+      "venue": "Journal of Mechanisms and Robotics, 2023",
+      "thumbnail": "images/snake.png",
+      "selected": 1,
+      "award": "",
+      "links": {
+        "pdf": "https://asmedigitalcollection.asme.org/mechanismsrobotics/article/15/4/041007/1145341/An-Energy-Saving-Snake-Locomotion-Pattern-Learned",
+        "arxiv": "https://arxiv.org/abs/2103.04511"
+      }
+    }
+  ]
+}
