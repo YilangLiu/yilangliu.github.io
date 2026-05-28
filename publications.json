@@ -1,6 +1,28 @@
 {
   "publications": [
     {
+      "title": "Efficient On-policy Visual-RL via Stochastic Decoupled Policy Gradient",
+      "authors": [
+        "Haoxiang You*",
+        "Yilang Liu*",
+        "Davis Zong",
+        "Qian Wang",
+        "Teeratham Vitchutripop",
+        "Qi Wang",
+        "Daniel Rakita",
+        "Ian Abraham"
+      ],
+      "venue": "Under review, 2026",
+      "thumbnail": "images/G1.mp4",
+      "selected": 1,
+      "award": "",
+      "links": {
+        "pdf": "https://arxiv.org/pdf/2605.26478",
+        "arxiv": "https://arxiv.org/abs/2605.26478",
+        "project": "https://haoxiangyou.github.io/sdpg-website/"
+      }
+    },
+    {
       "title": "Asymptotically Optimal Ergodic Coverage on Generalized Motion Fields",
       "authors": [
         "Christian Hughes",
