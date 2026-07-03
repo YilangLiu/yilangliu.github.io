@@ -36,7 +36,7 @@
         "Ian Abraham"
       ],
       "venue": "RSS 2026",
-      "thumbnail": "images/sphero_example.png",
+      "thumbnail": "images/sphero_example.jpg",
       "selected": 1,
       "award": "",
       "links": {
@@ -52,7 +52,7 @@
         "Ian Abraham"
       ],
       "venue": "ICRA 2026",
-      "thumbnail": "images/circus_robot.gif",
+      "thumbnail": "images/circus_robot.mp4",
       "selected": 1,
       "award": "",
       "links": {
@@ -90,8 +90,9 @@
       "selected": 1,
       "award": "",
       "links": {
-        "pdf": "https://asmedigitalcollection.asme.org/mechanismsrobotics/article/15/4/041007/1145341/An-Energy-Saving-Snake-Locomotion-Pattern-Learned",
-        "arxiv": "https://arxiv.org/abs/2103.04511"
+        "pdf": "https://arxiv.org/pdf/2103.04511",
+        "arxiv": "https://arxiv.org/abs/2103.04511",
+        "journal": "https://asmedigitalcollection.asme.org/mechanismsrobotics/article/15/4/041007/1145341/An-Energy-Saving-Snake-Locomotion-Pattern-Learned"
       }
     }
   ]

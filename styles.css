@@ -8,6 +8,7 @@
   --shadow-color: rgba(0,0,0,0.05);
   --animation-offset: 3px;
   --transition-time: 0.3s;
+  color-scheme: only light;
 }
 
 body {
@@ -64,20 +65,7 @@ h2 {
   letter-spacing: -0.01em;
 }
 
-/* Navigation */
-nav {
-  margin-top: 1.5rem;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-}
-
-nav a, .social-links-header a {
+.social-links-header a {
   text-decoration: none;
   color: var(--text-secondary);
   transition: all var(--transition-time) ease;
@@ -86,7 +74,7 @@ nav a, .social-links-header a {
   border-radius: 4px;
 }
 
-nav a:hover, .social-links-header a:hover {
+.social-links-header a:hover {
   color: var(--accent-color);
   background-color: rgba(74, 116, 185, 0.08);
   transform: translateX(var(--animation-offset));
@@ -103,12 +91,11 @@ nav a:hover, .social-links-header a:hover {
 }
 
 /* Unified animation for elements (not sections) */
-.publication-item, .award-item, .service-category, .misc-item, .news-list li {
+.publication-item, .service-category, .news-list li {
   transition: transform var(--transition-time) ease;
 }
 
-.publication-item:hover, .award-item:hover, 
-.service-category:hover, .misc-item:hover, .news-list li:hover {
+.publication-item:hover, .service-category:hover, .news-list li:hover {
   transform: translateX(var(--animation-offset));
 }
 
@@ -127,7 +114,7 @@ nav a:hover, .social-links-header a:hover {
 section {
   margin-bottom: 2rem;
   scroll-margin-top: 1rem;
-  animation: fadeIn 0.8s ease-out;
+  animation: fadeIn 0.8s ease-out backwards;
   width: 100%;
 }
 
@@ -141,7 +128,7 @@ section {
 
 .toggle-publications {
   background-color: rgba(74, 116, 185, 0.08);
-  color: var(--accent-color);
+  color: var(--accent-hover);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
@@ -153,6 +140,10 @@ section {
 .toggle-publications:hover {
   background-color: var(--accent-color);
   color: white;
+}
+
+#publications-container.show-selected .publication-item[data-selected="0"] {
+  display: none;
 }
 
 .publication-item {
@@ -182,15 +173,23 @@ section {
   transition: transform var(--transition-time) ease;
 }
 
-.pub-thumbnail:has(video) {
+.pub-thumbnail-video {
   height: auto;
   align-self: center;
+  cursor: default;
 }
 
 .pub-thumbnail video {
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   display: block;
+}
+
+.pub-thumbnail:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }
 
 .pub-thumbnail:hover img {
@@ -203,8 +202,8 @@ section {
 
 .pub-title {
   font-weight: 500;
-  margin-bottom: 0.4rem;
   font-size: 1.05rem;
+  margin: 0 0 0.4rem;
 }
 
 .pub-authors {
@@ -217,6 +216,11 @@ section {
 .highlight-name {
   font-weight: 600;
   color: var(--accent-color);
+}
+
+.equal-note {
+  font-size: 0.8rem;
+  font-style: italic;
 }
 
 .pub-venue-container {
@@ -243,7 +247,7 @@ section {
   display: inline-block;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   white-space: nowrap;
-  animation: pulse 2s infinite;
+  animation: pulse 2s 3;
 }
 
 @keyframes pulse {
@@ -266,7 +270,7 @@ section {
 }
 
 .pub-links a {
-  color: var(--accent-color);
+  color: var(--accent-hover);
   transition: all var(--transition-time) ease;
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
@@ -280,41 +284,7 @@ section {
   box-shadow: 0 2px 5px rgba(74, 116, 185, 0.2);
 }
 
-/* Awards section */
-.award-item {
-  display: flex;
-  align-items: baseline;
-  margin-bottom: 0.1rem;
-}
-
-.award-year {
-  font-weight: 500;
-  color: var(--accent-color);
-  flex: 0 0 80px;
-}
-
-.award-desc {
-  flex: 1;
-}
-
-.award-desc small {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-left: 0.5rem;
-}
-
 /* News section */
-.news-container {
-  max-height: 300px;
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.news-container::-webkit-scrollbar {
-  display: none;
-}
-
 .news-list {
   padding-left: 0;
   list-style-type: none;
@@ -339,7 +309,7 @@ section {
   color: var(--accent-color);
 }
 
-.service-category p, .misc-item p {
+.service-category p {
   margin: 0.25rem 0 0.75rem;
 }
 
@@ -433,6 +403,10 @@ strong {
   cursor: pointer;
   transition: color var(--transition-time);
   opacity: 0.8;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
 }
 
 .modal-close:hover {
@@ -441,8 +415,37 @@ strong {
   transform: scale(1.1);
 }
 
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .toggle-publications {
+    display: none;
+  }
+  .pub-thumbnail-video {
+    display: none;
+  }
+  section {
+    animation: none;
+  }
+  .pub-award {
+    animation: none;
+    box-shadow: none;
+  }
+}
+
 /* Responsive design fixes */
 @media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
   /* Make header stack vertically on mobile */
   header {
     flex-direction: column-reverse;
@@ -457,10 +460,19 @@ strong {
     justify-content: center;
   }
 
+  /* Give the publication text column more room on narrow screens */
+  .pub-thumbnail {
+    width: 100px;
+    height: 100px;
+  }
+
+  .pub-thumbnail-video {
+    height: auto;
+  }
+
   /* Disable right-moving hover animations on mobile */
-  .publication-item:hover, .award-item:hover, 
-  .service-category:hover, .misc-item:hover, .news-list li:hover,
-  nav a:hover, .social-links-header a:hover, .pub-links a:hover {
-    transform: none !important;
+  .publication-item:hover, .service-category:hover, .news-list li:hover,
+  .social-links-header a:hover, .pub-links a:hover {
+    transform: none;
   }
 }

@@ -3,19 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="only light">
+    <meta name="theme-color" content="#ffffff">
     <meta name="description" content="Yilang Liu — Ph.D. candidate in Mechanical Engineering at Yale University, researching robotics, optimal control, and reinforcement learning.">
-    <meta name="keywords" content="Yilang Liu, Yale, robotics, optimal control, reinforcement learning, sample-based control, visual policy learning, legged locomotion">
     <meta name="author" content="Yilang Liu">
     <meta property="og:title" content="Yilang Liu — Yale Robotics Ph.D.">
     <meta property="og:description" content="Ph.D. candidate at Yale researching robotics, optimal control, and reinforcement learning.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yilangliu.github.io">
+    <meta property="og:url" content="https://yilangliu.github.io/">
+    <meta property="og:image" content="https://yilangliu.github.io/images/me.jpeg">
+    <meta property="og:image:width" content="281">
+    <meta property="og:image:height" content="302">
+    <meta property="og:image:alt" content="Portrait of Yilang Liu">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Yilang Liu — Yale Robotics Ph.D.">
+    <meta name="twitter:description" content="Ph.D. candidate at Yale researching robotics, optimal control, and reinforcement learning.">
+    <meta name="twitter:image" content="https://yilangliu.github.io/images/me.jpeg">
     <meta name="google-site-verification" content="mL73eENVegxO0bdewolqAhJE5QW9SLIfl8DznZlUWAI" />
-    <title>Yilang Liu</title>
+    <title>Yilang Liu — Robotics Ph.D. Candidate at Yale University</title>
+    <link rel="canonical" href="https://yilangliu.github.io/">
     <link rel="icon" href="images/Yale_favicon_64px.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" href="publications.json" as="fetch" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;500;600&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Yilang Liu",
+      "url": "https://yilangliu.github.io/",
+      "image": "https://yilangliu.github.io/images/me.jpeg",
+      "jobTitle": "Ph.D. Candidate in Mechanical Engineering",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Yale University",
+        "url": "https://www.yale.edu/"
+      },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Carnegie Mellon University" },
+        { "@type": "CollegeOrUniversity", "name": "Chongqing University" },
+        { "@type": "CollegeOrUniversity", "name": "University of Cincinnati" }
+      ],
+      "knowsAbout": ["robotics", "optimal control", "reinforcement learning", "visual policy learning", "legged locomotion"],
+      "sameAs": [
+        "https://scholar.google.com/citations?user=yirVCdwAAAAJ",
+        "https://github.com/YilangLiu",
+        "https://orcid.org/0000-0002-4954-6384"
+      ]
+    }
+    </script>
 </head>
 <body id="top">
     <header>
@@ -23,22 +64,21 @@
             <h1>Yilang Liu</h1>
             <p>Ph.D. Candidate, Mechanical Engineering &bull; Yale University</p>
             <div class="social-links-header">
-                <a href="mailto:yilang.liu@yale.edu"><i class="fas fa-envelope"></i>Email</a>
-                <a href="data/PhD_resume.pdf"><i class="fas fa-file-alt"></i>CV</a>
-                <a href="https://scholar.google.com/citations?user=yirVCdwAAAAJ&hl=en&oi=ao"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
-                <a href="https://github.com/YilangLiu"><i class="fab fa-github"></i>GitHub</a>
-                <a href="https://orcid.org/0000-0002-4954-6384"><i class="fab fa-orcid"></i>ORCID</a>
+                <a href="mailto:yilang.liu@yale.edu"><i class="fas fa-envelope" aria-hidden="true"></i>Email</a>
+                <a href="https://scholar.google.com/citations?user=yirVCdwAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Google Scholar</a>
+                <a href="https://github.com/YilangLiu" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i>GitHub</a>
+                <a href="https://orcid.org/0000-0002-4954-6384" target="_blank" rel="noopener"><i class="fab fa-orcid" aria-hidden="true"></i>ORCID</a>
             </div>
         </div>
         <div class="header-image">
-            <img src="images/me.jpeg" alt="Yilang Liu">
+            <img src="images/me.jpeg" alt="Yilang Liu" width="130" height="130" decoding="async">
         </div>
     </header>
 
     <main>
         <section id="about">
-            <p>Hi! I'm a Ph.D. candidate in Mechanical Engineering at <a href="https://www.yale.edu/">Yale University</a>, advised by <a href="https://profiles.sydney.edu.au/ian.abraham">Prof. Ian Abraham</a>. My research focuses on robotics, optimal control, and reinforcement learning, with an emphasis on sample-based control, visual policy learning, and legged locomotion.</p>
-            <p>Previously, I received my M.S. from <a href="https://www.cmu.edu/">Carnegie Mellon University</a> and dual B.E./B.S. degrees from <a href="http://english.cqu.edu.cn/">Chongqing University</a> and the <a href="https://www.uc.edu/">University of Cincinnati</a>. I have also worked as a robotics intern at <a href="https://www.dexmate.ai/">Dexmate Inc.</a></p>
+            <p>Hi! I'm a Ph.D. candidate in Mechanical Engineering at <a href="https://www.yale.edu/" target="_blank" rel="noopener">Yale University</a>, advised by <a href="https://profiles.sydney.edu.au/ian.abraham" target="_blank" rel="noopener">Prof. Ian Abraham</a>. My research focuses on robotics, optimal control, and reinforcement learning, with an emphasis on sample-based control, visual policy learning, and legged locomotion.</p>
+            <p>Previously, I received my M.S. from <a href="https://www.cmu.edu/" target="_blank" rel="noopener">Carnegie Mellon University</a> and dual B.E./B.S. degrees from <a href="http://english.cqu.edu.cn/" target="_blank" rel="noopener">Chongqing University</a> and the <a href="https://www.uc.edu/" target="_blank" rel="noopener">University of Cincinnati</a>. I have also worked as a robotics intern at <a href="https://www.dexmate.ai/" target="_blank" rel="noopener">Dexmate Inc.</a></p>
         </section>
 
         <section id="research">
@@ -50,8 +90,8 @@
             <h2>News</h2>
             <div class="news-container">
                 <ul class="news-list">
-                    <li>05/2026: Our paper <em>Efficient On-policy Visual-RL via Stochastic Decoupled Policy Gradient</em> is under review.</li>
                     <li>05/2026: Our paper <em>Asymptotically Optimal Ergodic Coverage on Generalized Motion Fields</em> was accepted to <strong>RSS 2026</strong>.</li>
+                    <li>05/2026: Our paper <em>Efficient On-policy Visual-RL via Stochastic Decoupled Policy Gradient</em> is under review.</li>
                     <li>01/2026: Our paper <em>Sample-Based Hybrid Mode Control</em> was accepted to <strong>ICRA 2026</strong>.</li>
                     <li>09/2025: Our paper <em>Accelerating Visual-Policy Learning through Parallel Differentiable Simulation</em> was accepted to <strong>NeurIPS 2025</strong> as a <strong>Spotlight</strong>.</li>
                 </ul>
@@ -61,15 +101,23 @@
         <section id="publications">
             <div class="publications-header">
                 <h2 id="toggle-header">Selected Publications</h2>
-                <button id="toggle-publications" class="toggle-publications">Show All</button>
+                <button id="toggle-publications" class="toggle-publications" aria-controls="publications-container" aria-expanded="false">Show All</button>
             </div>
             <div id="publications-container">
-                <!-- Publications will be dynamically loaded here -->
+                <noscript>
+                    <ul>
+                        <li>Haoxiang You*, Yilang Liu*, Davis Zong, Qian Wang, Teeratham Vitchutripop, Qi Wang, Daniel Rakita, Ian Abraham. "Efficient On-policy Visual-RL via Stochastic Decoupled Policy Gradient." Under review, 2026. <a href="https://arxiv.org/abs/2605.26478">arXiv:2605.26478</a></li>
+                        <li>Christian Hughes, Yilang Liu, Yanis Lahrach, Julia Engdahl, Houston Warren, Darrick Lee, Fabio Ramos, Travis Miles, Ian Abraham. "Asymptotically Optimal Ergodic Coverage on Generalized Motion Fields." RSS 2026. <a href="https://arxiv.org/abs/2605.13442">arXiv:2605.13442</a></li>
+                        <li>Yilang Liu, Haoxiang You, Ian Abraham. "Sample-Based Hybrid Mode Control: Asymptotically Optimal Switching of Algorithmic and Non-Differentiable Control Modes." ICRA 2026. <a href="https://arxiv.org/abs/2510.19074">arXiv:2510.19074</a></li>
+                        <li>Haoxiang You, Yilang Liu, Ian Abraham. "Accelerating Visual-Policy Learning through Parallel Differentiable Simulation." NeurIPS 2025 (Spotlight). <a href="https://arxiv.org/abs/2505.10646">arXiv:2505.10646</a></li>
+                        <li>Yilang Liu, Amir Barati Farimani. "An Energy-Saving Snake Locomotion Gait Policy Obtained Using Deep Reinforcement Learning." Journal of Mechanisms and Robotics, 2023. <a href="https://arxiv.org/abs/2103.04511">arXiv:2103.04511</a></li>
+                    </ul>
+                </noscript>
             </div>
         </section>
 
         <section id="services">
-            <h2>Services</h2>
+            <h2>Service</h2>
             <div class="service-category">
                 <div class="service-title">Reviewer</div>
                 <p>IEEE Robotics and Automation Letters (RA-L); ICRA 2022&ndash;2026; IROS 2022&ndash;2026; ECCV 2024; RSS 2025.</p>
@@ -78,13 +126,12 @@
     </main>
 
     <footer>
-        <p>Last updated: May 2026. Template adapted from <a href="https://github.com/RongkunZhu/Minimal-Academic-Website">Minimal-Academic-Website</a>.</p>
+        <p>Last updated: July 2026. Template adapted from <a href="https://github.com/RongkunZhu/Minimal-Academic-Website" target="_blank" rel="noopener">Minimal-Academic-Website</a>.</p>
     </footer>
 
-    <div id="imageModal" class="modal">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
+    <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-label="Enlarged image viewer">
+        <button type="button" class="modal-close" aria-label="Close image viewer">&times;</button>
+        <img class="modal-content" id="modalImage" alt="" decoding="async">
     </div>
-    <script src="scripts.js"></script>
 </body>
 </html>

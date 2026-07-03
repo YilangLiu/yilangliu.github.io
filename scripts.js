@@ -1,145 +1,194 @@
-// Global variables
-let allPublications = [];
+// Start fetching publications immediately (the script is deferred, so this
+// runs during parsing, well before DOMContentLoaded)
+const publicationsPromise = fetch('publications.json').then(response => {
+  if (!response.ok) {
+    throw new Error(`Network response was not ok: ${response.status}`);
+  }
+  return response.json();
+});
+
 let showingSelected = true;
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Play publication demo videos only while they are on screen
+const videoObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.play().catch(() => {});
+    } else {
+      entry.target.pause();
+    }
+  });
+}, { rootMargin: '100px' });
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
-  // Load publications data
-  loadPublications();
-  
-  // Initialize animation delays for sections
+  // Stagger the section entrance animations
   const sections = document.querySelectorAll('section');
   sections.forEach((section, index) => {
     section.style.animationDelay = `${index * 0.1}s`;
   });
-  
-  // Add event listener for toggle button
+
   const toggleButton = document.getElementById('toggle-publications');
   if (toggleButton) {
     toggleButton.addEventListener('click', togglePublications);
   }
-});
 
-// Load publications from JSON file
-function loadPublications() {
-  fetch('publications.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.status}`);
-      }
-      return response.json();
-    })
+  const modal = document.getElementById('imageModal');
+  modal.querySelector('.modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', event => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  publicationsPromise
     .then(data => {
-      console.log("Publications loaded successfully:", data);
-      allPublications = data.publications;
-      renderPublications(true);
+      renderPublications(data.publications);
     })
     .catch(error => {
       console.error('Error loading publications:', error);
-      // Create fallback publications display if JSON loading fails
       displayFallbackPublications();
     });
-}
+});
 
 // Fallback if JSON loading fails
 function displayFallbackPublications() {
   const container = document.getElementById('publications-container');
-  container.innerHTML = `Error loading publications.`;
+  container.textContent = 'Publications could not be loaded. Please see my ';
+  const link = document.createElement('a');
+  link.href = 'https://scholar.google.com/citations?user=yirVCdwAAAAJ';
+  link.textContent = 'Google Scholar profile';
+  container.appendChild(link);
+  container.appendChild(document.createTextNode('.'));
+}
+
+// Render every publication once; the show-selected class controls visibility
+function renderPublications(publications) {
+  const container = document.getElementById('publications-container');
+  const fragment = document.createDocumentFragment();
+  publications.forEach(publication => {
+    fragment.appendChild(createPublicationElement(publication));
+  });
+  container.appendChild(fragment);
+  container.classList.add('show-selected');
+
+  // With no unselected entries the toggle would be a no-op — hide it
+  if (publications.every(pub => pub.selected === 1)) {
+    document.getElementById('toggle-publications').style.display = 'none';
+    document.getElementById('toggle-header').textContent = 'Publications';
+  }
 }
 
 // Toggle between showing all or selected publications
 function togglePublications() {
   showingSelected = !showingSelected;
-  renderPublications(showingSelected);
-  
-  // Update button text
+  const container = document.getElementById('publications-container');
+  container.classList.toggle('show-selected', showingSelected);
+
   const toggleButton = document.getElementById('toggle-publications');
   toggleButton.textContent = showingSelected ? 'Show All' : 'Show Selected';
+  toggleButton.setAttribute('aria-expanded', String(!showingSelected));
   const toggleHeader = document.getElementById('toggle-header');
   toggleHeader.textContent = showingSelected ? 'Selected Publications' : 'All Publications';
-}
-
-// Render publications based on selection state
-function renderPublications(selectedOnly) {
-  const publicationsContainer = document.getElementById('publications-container');
-  publicationsContainer.innerHTML = '';
-  
-  const pubsToShow = selectedOnly ? 
-    allPublications.filter(pub => pub.selected === 1) : 
-    allPublications;
-  
-  pubsToShow.forEach(publication => {
-    const pubElement = createPublicationElement(publication);
-    publicationsContainer.appendChild(pubElement);
-  });
 }
 
 // Create HTML element for a publication
 function createPublicationElement(publication) {
   const pubItem = document.createElement('div');
   pubItem.className = 'publication-item';
-  
+  pubItem.dataset.selected = publication.selected;
+
   // Create thumbnail (video or image based on extension)
   const thumbnail = document.createElement('div');
   thumbnail.className = 'pub-thumbnail';
 
   const isVideo = /\.(mp4|webm|ogg|mov)$/i.test(publication.thumbnail);
   if (isVideo) {
+    thumbnail.classList.add('pub-thumbnail-video');
     const thumbnailVideo = document.createElement('video');
     thumbnailVideo.src = publication.thumbnail;
     thumbnailVideo.muted = true;
-    thumbnailVideo.autoplay = true;
+    // The attribute is needed in addition to the property for autoplay of
+    // dynamically created videos in some browsers
+    thumbnailVideo.setAttribute('muted', '');
     thumbnailVideo.loop = true;
     thumbnailVideo.playsInline = true;
+    thumbnailVideo.preload = 'metadata';
+    if (prefersReducedMotion) {
+      thumbnailVideo.controls = true;
+      thumbnailVideo.setAttribute('aria-label', `Demo video: ${publication.title}`);
+    } else {
+      thumbnailVideo.setAttribute('aria-hidden', 'true');
+      videoObserver.observe(thumbnailVideo);
+    }
     thumbnail.appendChild(thumbnailVideo);
   } else {
-    thumbnail.onclick = () => openModal(publication.thumbnail);
+    thumbnail.onclick = () => openModal(publication.thumbnail, publication.title);
+    thumbnail.setAttribute('role', 'button');
+    thumbnail.setAttribute('tabindex', '0');
+    thumbnail.setAttribute('aria-label', `View enlarged figure for ${publication.title}`);
+    thumbnail.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openModal(publication.thumbnail, publication.title);
+      }
+    });
     const thumbnailImg = document.createElement('img');
     thumbnailImg.src = publication.thumbnail;
     thumbnailImg.alt = `${publication.title} thumbnail`;
+    thumbnailImg.loading = 'lazy';
+    thumbnailImg.decoding = 'async';
     thumbnail.appendChild(thumbnailImg);
   }
-  
+
   // Create content container
   const content = document.createElement('div');
   content.className = 'pub-content';
-  
+
   // Add title
-  const title = document.createElement('div');
+  const title = document.createElement('h3');
   title.className = 'pub-title';
   title.textContent = publication.title;
   content.appendChild(title);
-  
-  // Add authors with highlight
+
+  // Add authors with highlight (textContent keeps JSON data from being parsed as HTML)
   const authors = document.createElement('div');
   authors.className = 'pub-authors';
-  
-  // Format authors with highlighting
-  let authorsHTML = '';
+
   publication.authors.forEach((author, index) => {
     if (author.includes('Yilang Liu')) {
-      authorsHTML += `<span class="highlight-name">${author}</span>`;
+      const highlight = document.createElement('span');
+      highlight.className = 'highlight-name';
+      highlight.textContent = author;
+      authors.appendChild(highlight);
     } else {
-      authorsHTML += author;
+      authors.appendChild(document.createTextNode(author));
     }
-    
+
     if (index < publication.authors.length - 1) {
-      authorsHTML += ', ';
+      authors.appendChild(document.createTextNode(', '));
     }
   });
-  
-  authors.innerHTML = authorsHTML;
+
+  if (publication.authors.some(author => author.includes('*'))) {
+    const note = document.createElement('span');
+    note.className = 'equal-note';
+    note.textContent = ' (* equal contribution)';
+    authors.appendChild(note);
+  }
   content.appendChild(authors);
-  
+
   // Add venue with award if present
   const venueContainer = document.createElement('div');
   venueContainer.className = 'pub-venue-container';
-  
+
   const venue = document.createElement('div');
   venue.className = 'pub-venue';
   venue.textContent = publication.venue;
   venueContainer.appendChild(venue);
-  
+
   // Add award if it exists
   if (publication.award && publication.award.length > 0) {
     const award = document.createElement('div');
@@ -147,75 +196,85 @@ function createPublicationElement(publication) {
     award.textContent = publication.award;
     venueContainer.appendChild(award);
   }
-  
+
   content.appendChild(venueContainer);
-  
+
   // Add links if they exist
   if (publication.links) {
     const links = document.createElement('div');
     links.className = 'pub-links';
-    
-    if (publication.links.pdf) {
-      const pdfLink = document.createElement('a');
-      pdfLink.href = publication.links.pdf;
-      pdfLink.textContent = '[PDF]';
-      links.appendChild(pdfLink);
-    }
 
-    if (publication.links.arxiv) {
-      const arxivLink = document.createElement('a');
-      arxivLink.href = publication.links.arxiv;
-      arxivLink.textContent = '[arXiv]';
-      links.appendChild(arxivLink);
-    }
+    const linkTypes = [
+      ['pdf', '[PDF]', 'PDF'],
+      ['arxiv', '[arXiv]', 'arXiv page'],
+      ['journal', '[Journal]', 'Journal version'],
+      ['code', '[Code]', 'Code'],
+      ['project', '[Project Page]', 'Project page']
+    ];
 
-    if (publication.links.code) {
-      const codeLink = document.createElement('a');
-      codeLink.href = publication.links.code;
-      codeLink.textContent = '[Code]';
-      links.appendChild(codeLink);
-    }
+    linkTypes.forEach(([key, label, name]) => {
+      if (publication.links[key]) {
+        const link = document.createElement('a');
+        link.href = publication.links[key];
+        link.textContent = label;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.setAttribute('aria-label', `${name}: ${publication.title}`);
+        links.appendChild(link);
+      }
+    });
 
-    if (publication.links.project) {
-      const projectLink = document.createElement('a');
-      projectLink.href = publication.links.project;
-      projectLink.textContent = '[Project Page]';
-      links.appendChild(projectLink);
-    }
-    
     content.appendChild(links);
   }
-  
+
   // Assemble the publication item
   pubItem.appendChild(thumbnail);
   pubItem.appendChild(content);
-  
+
   return pubItem;
 }
 
 // Modal functionality for viewing original images
-function openModal(imageSrc) {
+let lastFocusedElement = null;
+let modalHideTimer = null;
+
+function openModal(imageSrc, title) {
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalImage');
+  clearTimeout(modalHideTimer);
+  lastFocusedElement = document.activeElement;
   modal.style.display = "block";
   setTimeout(() => {
     modal.classList.add('show');
   }, 10);
   modalImg.src = imageSrc;
+  modalImg.alt = title ? `Full-size figure: ${title}` : '';
+  modal.querySelector('.modal-close').focus();
 }
 
 function closeModal() {
   const modal = document.getElementById('imageModal');
   modal.classList.remove('show');
-  setTimeout(() => {
+  modalHideTimer = setTimeout(() => {
     modal.style.display = "none";
   }, 300);
-}
-
-// Close modal when clicking outside the image
-window.onclick = function(event) {
-  const modal = document.getElementById('imageModal');
-  if (event.target == modal) {
-    closeModal();
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+    lastFocusedElement = null;
   }
 }
+
+// Keyboard handling while the modal is open: Escape closes it, and Tab stays
+// on the close button (the dialog's only focusable control)
+window.addEventListener('keydown', function(event) {
+  const modal = document.getElementById('imageModal');
+  if (modal.style.display !== 'block') {
+    return;
+  }
+  if (event.key === 'Escape') {
+    closeModal();
+  } else if (event.key === 'Tab') {
+    event.preventDefault();
+    modal.querySelector('.modal-close').focus();
+  }
+});
