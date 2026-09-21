@@ -43,13 +43,13 @@
         "Ian Abraham"
       ],
       "venue": "Under review, 2026",
-      "thumbnail": "images/go2_depth_overlay.mp4",
+      "thumbnail": "images/sgps_demos.mp4",
       "selected": 1,
       "award": "",
       "links": {
         "pdf": "https://arxiv.org/pdf/2609.20575",
         "arxiv": "https://arxiv.org/abs/2609.20575",
-        "video": "images/go2_depth_overlay.mp4"
+        "video": "images/sgps_demos.mp4"
       },
       "poster": "images/go2_depth_overlay.jpg",
       "summary": "Sampling-guided visual policy learning enables zero-shot locomotion on a real quadruped."
