@@ -22,6 +22,10 @@ body {
   font-weight: 300;
 }
 
+.job-market-highlight {
+  color: #a33a3a;
+}
+
 header {
   margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--border-color);
