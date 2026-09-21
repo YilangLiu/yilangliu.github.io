@@ -60,6 +60,13 @@ h1 {
   letter-spacing: -0.02em;
 }
 
+.chinese-name {
+  font-family: 'Kaiti SC', 'STKaiti', 'KaiTi', '楷体', serif;
+  font-size: 0.75em;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
 h2 {
   font-size: 1.4rem;
   font-weight: 500;
