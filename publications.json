@@ -1,6 +1,58 @@
 {
   "publications": [
     {
+      "title": "EmbodiedSWE: Coding Agents for Long-Horizon Dexterous Robotics",
+      "authors": [
+        "Zeyu Shen*",
+        "Haoxiang You*",
+        "Yilang Liu*",
+        "Zhicheng Zheng",
+        "Lihan Zha",
+        "Kashu Yamazaki",
+        "Mingtong Zhang",
+        "Suning Huang",
+        "Jiankai Sun",
+        "Qianzhong Chen",
+        "Lucy He",
+        "Haoran Chang",
+        "Dhruv Shah",
+        "Mac Schwager",
+        "Katerina Fragkiadaki",
+        "Peter Henderson",
+        "Ian Abraham",
+        "Canwen Xu"
+      ],
+      "venue": "Under review, 2026",
+      "thumbnail": "images/embodiedswe_overview.mp4",
+      "poster": "images/embodiedswe_overview.jpg",
+      "selected": 1,
+      "award": "",
+      "links": {
+        "project": "https://embodiedswe.github.io/",
+        "video": "images/embodiedswe_overview.mp4"
+      }
+    },
+    {
+      "title": "Accelerating Visual Policy Learning with Sampling-Based Model Predictive Control",
+      "authors": [
+        "Yilang Liu",
+        "Haoxiang You",
+        "Qian Wang",
+        "Daniel Rakita",
+        "Ian Abraham"
+      ],
+      "venue": "arXiv preprint, 2026",
+      "thumbnail": "images/go2_depth_overlay.mp4",
+      "selected": 1,
+      "award": "",
+      "links": {
+        "pdf": "https://arxiv.org/pdf/2609.20575",
+        "arxiv": "https://arxiv.org/abs/2609.20575",
+        "video": "images/go2_depth_overlay.mp4"
+      },
+      "poster": "images/go2_depth_overlay.jpg"
+    },
+    {
       "title": "Efficient On-policy Visual-RL via Stochastic Decoupled Policy Gradient",
       "authors": [
         "Haoxiang You*",

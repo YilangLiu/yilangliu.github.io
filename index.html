@@ -77,25 +77,23 @@
 
     <main>
         <section id="about">
-            <p>Hi! I'm a Ph.D. candidate in Mechanical Engineering at <a href="https://www.yale.edu/" target="_blank" rel="noopener">Yale University</a>, advised by <a href="https://profiles.sydney.edu.au/ian.abraham" target="_blank" rel="noopener">Prof. Ian Abraham</a>. My research focuses on robotics, optimal control, and reinforcement learning, with an emphasis on sample-based control, visual policy learning, and legged locomotion.</p>
+            <p>Hi! I'm a Ph.D. candidate in Mechanical Engineering at <a href="https://www.yale.edu/" target="_blank" rel="noopener">Yale University</a>, advised by <a href="https://profiles.sydney.edu.au/ian.abraham" target="_blank" rel="noopener">Prof. Ian Abraham</a>. My research develops sample-based control and robot learning methods for visual policies, legged locomotion, dexterous manipulation, and autonomous exploration.</p>
             <p>Previously, I received my M.S. from <a href="https://www.cmu.edu/" target="_blank" rel="noopener">Carnegie Mellon University</a> and dual B.E./B.S. degrees from <a href="http://english.cqu.edu.cn/" target="_blank" rel="noopener">Chongqing University</a> and the <a href="https://www.uc.edu/" target="_blank" rel="noopener">University of Cincinnati</a>. I have also worked as a robotics intern at <a href="https://www.dexmate.ai/" target="_blank" rel="noopener">Dexmate Inc.</a></p>
-        </section>
-
-        <section id="research">
-            <h2>Research</h2>
-            <p>I'm interested in <strong>robotics, optimal control, reinforcement learning, and vision-based policy learning</strong>. My research develops sample-based and data-driven methods for robot control, with applications in legged locomotion, dexterous manipulation, and autonomous exploration.</p>
         </section>
 
         <section id="news">
             <h2>News</h2>
-            <div class="news-container">
-                <ul class="news-list">
-                    <li>09/2026: Our paper <em>Efficient On-policy Visual-RL via Stochastic Decoupled Policy Gradient</em> was accepted to <strong>CoRL 2026</strong>.</li>
-                    <li>05/2026: Our paper <em>Asymptotically Optimal Ergodic Coverage on Generalized Motion Fields</em> was accepted to <strong>RSS 2026</strong>.</li>
-                    <li>01/2026: Our paper <em>Sample-Based Hybrid Mode Control</em> was accepted to <strong>ICRA 2026</strong>.</li>
-                    <li>09/2025: Our paper <em>Accelerating Visual-Policy Learning through Parallel Differentiable Simulation</em> was accepted to <strong>NeurIPS 2025</strong> as a <strong>Spotlight</strong>.</li>
-                </ul>
-            </div>
+            <ul class="news-list">
+                <li><time datetime="2026-09">Sep 2026</time><span>Introducing <a href="https://embodiedswe.github.io/" target="_blank" rel="noopener">EmbodiedSWE</a>: coding agents for long-horizon dexterous robotics.</span></li>
+                <li><time datetime="2026-09">Sep 2026</time><span>Our <a href="https://arxiv.org/abs/2609.20575" target="_blank" rel="noopener">Sampling-Guided Policy Search</a> paper is available on arXiv.</span></li>
+                <li><time datetime="2026-09">Sep 2026</time><span><a href="https://haoxiangyou.github.io/sdpg-website/" target="_blank" rel="noopener">SDPG</a> accepted to <strong>CoRL 2026</strong>.</span></li>
+            </ul>
+            <ul class="news-list" id="older-news">
+                <li><time datetime="2026-05">May 2026</time><span>Our ergodic coverage paper accepted to <strong>RSS 2026</strong>.</span></li>
+                <li><time datetime="2026-01">Jan 2026</time><span>Sample-Based Hybrid Mode Control accepted to <strong>ICRA 2026</strong>.</span></li>
+                <li><time datetime="2025-09">Sep 2025</time><span>D.Va accepted to <strong>NeurIPS 2025</strong> as a <strong>Spotlight</strong>.</span></li>
+            </ul>
+            <button type="button" id="toggle-news" class="news-toggle" aria-controls="older-news" aria-expanded="false" hidden>Show older updates</button>
         </section>
 
         <section id="publications">
@@ -106,6 +104,8 @@
             <div id="publications-container">
                 <noscript>
                     <ul>
+                        <li>Zeyu Shen*, Haoxiang You*, Yilang Liu*, Zhicheng Zheng, Lihan Zha, Kashu Yamazaki, Mingtong Zhang, Suning Huang, Jiankai Sun, Qianzhong Chen, Lucy He, Haoran Chang, Dhruv Shah, Mac Schwager, Katerina Fragkiadaki, Peter Henderson, Ian Abraham, Canwen Xu. "EmbodiedSWE: Coding Agents for Long-Horizon Dexterous Robotics." Under review, 2026 (* equal contribution). <a href="https://embodiedswe.github.io/">Project page</a></li>
+                        <li>Yilang Liu, Haoxiang You, Qian Wang, Daniel Rakita, Ian Abraham. "Accelerating Visual Policy Learning with Sampling-Based Model Predictive Control." arXiv preprint, 2026. <a href="https://arxiv.org/abs/2609.20575">arXiv:2609.20575</a></li>
                         <li>Haoxiang You*, Yilang Liu*, Davis Zong, Qian Wang, Teeratham Vitchutripop, Qi Wang, Daniel Rakita, Ian Abraham. "Efficient On-policy Visual-RL via Stochastic Decoupled Policy Gradient." CoRL 2026. <a href="https://arxiv.org/abs/2605.26478">arXiv:2605.26478</a></li>
                         <li>Christian Hughes, Yilang Liu, Yanis Lahrach, Julia Engdahl, Houston Warren, Darrick Lee, Fabio Ramos, Travis Miles, Ian Abraham. "Asymptotically Optimal Ergodic Coverage on Generalized Motion Fields." RSS 2026. <a href="https://arxiv.org/abs/2605.13442">arXiv:2605.13442</a></li>
                         <li>Yilang Liu, Haoxiang You, Ian Abraham. "Sample-Based Hybrid Mode Control: Asymptotically Optimal Switching of Algorithmic and Non-Differentiable Control Modes." ICRA 2026. <a href="https://arxiv.org/abs/2510.19074">arXiv:2510.19074</a></li>

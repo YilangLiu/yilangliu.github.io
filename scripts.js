@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButton.addEventListener('click', togglePublications);
   }
 
+  initializeNews();
+
   const modal = document.getElementById('imageModal');
   modal.querySelector('.modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', event => {
@@ -68,8 +70,8 @@ function displayFallbackPublications() {
 function renderPublications(publications) {
   const container = document.getElementById('publications-container');
   const fragment = document.createDocumentFragment();
-  publications.forEach(publication => {
-    fragment.appendChild(createPublicationElement(publication));
+  publications.forEach((publication, index) => {
+    fragment.appendChild(createPublicationElement(publication, index));
   });
   container.appendChild(fragment);
   container.classList.add('show-selected');
@@ -94,36 +96,85 @@ function togglePublications() {
   toggleHeader.textContent = showingSelected ? 'Selected Publications' : 'All Publications';
 }
 
+// Progressively enhance the news: all updates remain readable without JavaScript.
+function initializeNews() {
+  const button = document.getElementById('toggle-news');
+  const older = document.getElementById('older-news');
+  if (!button || !older) return;
+  older.hidden = true;
+  button.hidden = false;
+  button.setAttribute('aria-expanded', 'false');
+  button.addEventListener('click', () => {
+    older.hidden = !older.hidden;
+    button.setAttribute('aria-expanded', String(!older.hidden));
+    button.textContent = older.hidden ? 'Show older updates' : 'Show fewer updates';
+  });
+}
+
+// Keep author order intact and ensure Yilang remains visible in the short list.
+function createAuthors(names, index) {
+  const authors = document.createElement('div');
+  authors.className = 'pub-authors';
+  const visibleCount = Math.max(6, names.findIndex(name => name.includes('Yilang Liu')) + 1);
+  const remainder = document.createElement('span');
+  remainder.id = `publication-authors-${index}`;
+  remainder.hidden = true;
+
+  names.forEach((name, authorIndex) => {
+    const target = authorIndex < visibleCount ? authors : remainder;
+    if (authorIndex > 0) target.appendChild(document.createTextNode(', '));
+    const author = document.createElement('span');
+    author.className = name.includes('Yilang Liu') ? 'pub-author highlight-name' : 'pub-author';
+    author.textContent = name;
+    target.appendChild(author);
+  });
+
+  if (names.length > visibleCount) {
+    authors.appendChild(remainder);
+    authors.appendChild(document.createTextNode(' '));
+    const button = document.createElement('button');
+    const count = names.length - visibleCount;
+    const label = `${count} more ${count === 1 ? 'author' : 'authors'}`;
+    button.type = 'button';
+    button.className = 'author-toggle';
+    button.textContent = label;
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', remainder.id);
+    button.addEventListener('click', () => {
+      remainder.hidden = !remainder.hidden;
+      button.setAttribute('aria-expanded', String(!remainder.hidden));
+      button.textContent = remainder.hidden ? label : 'Fewer authors';
+    });
+    authors.appendChild(button);
+  }
+
+  if (names.some(name => name.includes('*'))) {
+    const note = document.createElement('span');
+    note.className = 'equal-note';
+    note.textContent = ' (* equal contribution)';
+    authors.appendChild(note);
+  }
+  return authors;
+}
+
 // Create HTML element for a publication
-function createPublicationElement(publication) {
+function createPublicationElement(publication, index = 0) {
   const pubItem = document.createElement('div');
   pubItem.className = 'publication-item';
   pubItem.dataset.selected = publication.selected;
 
-  // Create thumbnail (video or image based on extension)
-  const thumbnail = document.createElement('div');
+  const primaryUrl = publication.links?.project || publication.links?.arxiv ||
+    publication.links?.pdf || publication.links?.journal;
+  const isVideo = /\.(mp4|webm|ogg|mov)$/i.test(publication.thumbnail);
+  const previewUrl = isVideo ? (publication.links?.video || publication.thumbnail) : primaryUrl;
+  const thumbnail = document.createElement(previewUrl ? 'a' : 'div');
   thumbnail.className = 'pub-thumbnail';
 
-  const isVideo = /\.(mp4|webm|ogg|mov)$/i.test(publication.thumbnail);
-  if (isVideo) {
-    thumbnail.classList.add('pub-thumbnail-video');
-    const thumbnailVideo = document.createElement('video');
-    thumbnailVideo.src = publication.thumbnail;
-    thumbnailVideo.muted = true;
-    // The attribute is needed in addition to the property for autoplay of
-    // dynamically created videos in some browsers
-    thumbnailVideo.setAttribute('muted', '');
-    thumbnailVideo.loop = true;
-    thumbnailVideo.playsInline = true;
-    thumbnailVideo.preload = 'metadata';
-    if (prefersReducedMotion) {
-      thumbnailVideo.controls = true;
-      thumbnailVideo.setAttribute('aria-label', `Demo video: ${publication.title}`);
-    } else {
-      thumbnailVideo.setAttribute('aria-hidden', 'true');
-      videoObserver.observe(thumbnailVideo);
-    }
-    thumbnail.appendChild(thumbnailVideo);
+  if (previewUrl) {
+    thumbnail.href = previewUrl;
+    thumbnail.target = '_blank';
+    thumbnail.rel = 'noopener';
+    thumbnail.setAttribute('aria-label', `${isVideo ? 'Watch demo' : 'View paper'}: ${publication.title}`);
   } else {
     thumbnail.onclick = () => openModal(publication.thumbnail, publication.title);
     thumbnail.setAttribute('role', 'button');
@@ -135,12 +186,29 @@ function createPublicationElement(publication) {
         openModal(publication.thumbnail, publication.title);
       }
     });
-    const thumbnailImg = document.createElement('img');
-    thumbnailImg.src = publication.thumbnail;
-    thumbnailImg.alt = `${publication.title} thumbnail`;
-    thumbnailImg.loading = 'lazy';
-    thumbnailImg.decoding = 'async';
-    thumbnail.appendChild(thumbnailImg);
+  }
+
+  if (isVideo) {
+    thumbnail.classList.add('pub-thumbnail-video');
+    const video = document.createElement('video');
+    video.src = publication.thumbnail;
+    video.muted = true;
+    video.setAttribute('muted', '');
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.setAttribute('aria-hidden', 'true');
+    if (publication.poster) video.poster = publication.poster;
+    // Reduced-motion visitors can open the full video using the preview link.
+    if (!prefersReducedMotion) videoObserver.observe(video);
+    thumbnail.appendChild(video);
+  } else {
+    const img = document.createElement('img');
+    img.src = publication.thumbnail;
+    img.alt = `${publication.title} thumbnail`;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    thumbnail.appendChild(img);
   }
 
   // Create content container
@@ -150,35 +218,19 @@ function createPublicationElement(publication) {
   // Add title
   const title = document.createElement('h3');
   title.className = 'pub-title';
-  title.textContent = publication.title;
+  if (primaryUrl) {
+    const titleLink = document.createElement('a');
+    titleLink.href = primaryUrl;
+    titleLink.target = '_blank';
+    titleLink.rel = 'noopener';
+    titleLink.textContent = publication.title;
+    title.appendChild(titleLink);
+  } else {
+    title.textContent = publication.title;
+  }
   content.appendChild(title);
 
-  // Add authors with highlight (textContent keeps JSON data from being parsed as HTML)
-  const authors = document.createElement('div');
-  authors.className = 'pub-authors';
-
-  publication.authors.forEach((author, index) => {
-    if (author.includes('Yilang Liu')) {
-      const highlight = document.createElement('span');
-      highlight.className = 'highlight-name';
-      highlight.textContent = author;
-      authors.appendChild(highlight);
-    } else {
-      authors.appendChild(document.createTextNode(author));
-    }
-
-    if (index < publication.authors.length - 1) {
-      authors.appendChild(document.createTextNode(', '));
-    }
-  });
-
-  if (publication.authors.some(author => author.includes('*'))) {
-    const note = document.createElement('span');
-    note.className = 'equal-note';
-    note.textContent = ' (* equal contribution)';
-    authors.appendChild(note);
-  }
-  content.appendChild(authors);
+  content.appendChild(createAuthors(publication.authors, index));
 
   // Add venue with award if present
   const venueContainer = document.createElement('div');
@@ -209,7 +261,8 @@ function createPublicationElement(publication) {
       ['arxiv', '[arXiv]', 'arXiv page'],
       ['journal', '[Journal]', 'Journal version'],
       ['code', '[Code]', 'Code'],
-      ['project', '[Project Page]', 'Project page']
+      ['project', '[Project Page]', 'Project page'],
+      ['video', '[Video]', 'Full demo video']
     ];
 
     linkTypes.forEach(([key, label, name]) => {
