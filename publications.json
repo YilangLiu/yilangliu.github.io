@@ -30,7 +30,8 @@
       "links": {
         "project": "https://embodiedswe.github.io/",
         "video": "images/embodiedswe_overview.mp4"
-      }
+      },
+      "summary": "Coding agents solve long-horizon robotics tasks and generate demonstrations for vision-language-action policies."
     },
     {
       "title": "Accelerating Visual Policy Learning with Sampling-Based Model Predictive Control",
@@ -50,7 +51,8 @@
         "arxiv": "https://arxiv.org/abs/2609.20575",
         "video": "images/go2_depth_overlay.mp4"
       },
-      "poster": "images/go2_depth_overlay.jpg"
+      "poster": "images/go2_depth_overlay.jpg",
+      "summary": "Sampling-guided visual policy learning enables zero-shot locomotion on a real quadruped."
     },
     {
       "title": "Efficient On-policy Visual-RL via Stochastic Decoupled Policy Gradient",
@@ -72,7 +74,8 @@
         "pdf": "https://arxiv.org/pdf/2605.26478",
         "arxiv": "https://arxiv.org/abs/2605.26478",
         "project": "https://haoxiangyou.github.io/sdpg-website/"
-      }
+      },
+      "summary": "Visual reinforcement learning reduces GPU memory use and transfers zero-shot to a real quadruped."
     },
     {
       "title": "Asymptotically Optimal Ergodic Coverage on Generalized Motion Fields",
@@ -94,7 +97,8 @@
       "links": {
         "pdf": "https://arxiv.org/pdf/2605.13442",
         "arxiv": "https://arxiv.org/abs/2605.13442"
-      }
+      },
+      "summary": "Flow-aware trajectory planning enables robotic coverage in environments with changing motion fields."
     },
     {
       "title": "Sample-Based Hybrid Mode Control: Asymptotically Optimal Switching of Algorithmic and Non-Differentiable Control Modes",
@@ -111,7 +115,8 @@
         "pdf": "https://arxiv.org/pdf/2510.19074",
         "arxiv": "https://arxiv.org/abs/2510.19074",
         "project": "https://yilangliu.github.io/hybrid_mode_sampling/"
-      }
+      },
+      "summary": "Sampling-based control switches between locomotion modes to execute agile quadruped skills."
     },
     {
       "title": "Accelerating Visual-Policy Learning through Parallel Differentiable Simulation",
@@ -129,7 +134,8 @@
         "arxiv": "https://arxiv.org/abs/2505.10646",
         "code": "https://github.com/HaoxiangYou/D.VA",
         "project": "https://haoxiangyou.github.io/Dva_website/"
-      }
+      },
+      "summary": "Parallel differentiable simulation accelerates visual policy learning without differentiating through rendering."
     },
     {
       "title": "An Energy-Saving Snake Locomotion Gait Policy Obtained Using Deep Reinforcement Learning",
@@ -145,7 +151,8 @@
         "pdf": "https://arxiv.org/pdf/2103.04511",
         "arxiv": "https://arxiv.org/abs/2103.04511",
         "journal": "https://asmedigitalcollection.asme.org/mechanismsrobotics/article/15/4/041007/1145341/An-Energy-Saving-Snake-Locomotion-Pattern-Learned"
-      }
+      },
+      "summary": "Model-based reinforcement learning discovers energy-efficient locomotion for a simulated snake robot."
     }
   ]
 }

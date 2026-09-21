@@ -251,6 +251,13 @@ function createPublicationElement(publication, index = 0) {
 
   content.appendChild(venueContainer);
 
+  if (publication.summary) {
+    const takeaway = document.createElement('p');
+    takeaway.className = 'pub-takeaway';
+    takeaway.textContent = publication.summary;
+    content.appendChild(takeaway);
+  }
+
   // Add links if they exist
   if (publication.links) {
     const links = document.createElement('div');

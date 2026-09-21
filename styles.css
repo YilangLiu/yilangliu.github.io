@@ -14,7 +14,7 @@
 body {
   font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
   line-height: 1.6;
-  max-width: 800px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 1.5rem;
   color: var(--text-color);
@@ -154,12 +154,19 @@ section {
 
 .publication-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   align-items: start;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-  padding: 0.75rem 0 1.5rem;
-  border-bottom: 1px solid var(--border-color);
+  gap: 1.4rem;
+  margin-bottom: 1.1rem;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 3px 14px var(--shadow-color);
+}
+
+.publication-item:focus-within {
+  border-color: var(--accent-color);
 }
 
 .pub-thumbnail {
@@ -172,7 +179,7 @@ section {
   overflow: hidden;
   background: #f7f9fc;
   cursor: pointer;
-  box-shadow: 0 2px 8px var(--shadow-color);
+  box-shadow: none;
 }
 
 .pub-thumbnail img,
@@ -194,7 +201,7 @@ section {
 
 .pub-title {
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 0.96rem;
   line-height: 1.45;
   margin: 0 0 0.45rem;
 }
@@ -222,7 +229,7 @@ section {
 }
 
 .author-toggle {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 .news-toggle {
@@ -241,7 +248,7 @@ button:focus-visible {
 }
 
 .pub-authors {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   margin-bottom: 0.4rem;
   color: var(--text-secondary);
   line-height: 1.5;
@@ -253,7 +260,7 @@ button:focus-visible {
 }
 
 .equal-note {
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-style: italic;
 }
 
@@ -266,7 +273,7 @@ button:focus-visible {
 }
 
 .pub-venue {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-style: italic;
   color: var(--text-secondary);
 }
@@ -297,7 +304,7 @@ button:focus-visible {
 }
 
 .pub-links {
-  font-size: 0.85rem;
+  font-size: 0.76rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -454,6 +461,125 @@ strong {
   transform: scale(1.1);
 }
 
+
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  font-size: 0.85rem;
+}
+
+.section-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.pub-takeaway {
+  display: block;
+  margin: 0.35rem 0 0.65rem;
+  font-size: 0.825rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.background-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.background-entry {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 1.25rem;
+  padding: 0.25rem 0 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.background-entry:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.background-logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.background-logo {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.background-logos-pair .background-logo {
+  width: 44px;
+  height: 44px;
+}
+
+/* Display the seal at the left of the official horizontal lockup. */
+.background-logo-chongqing {
+  object-fit: cover;
+  object-position: left center;
+}
+
+.background-content {
+  min-width: 0;
+}
+
+.background-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.background-heading h3 {
+  flex: 1 1 18rem;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.background-heading h3 a {
+  color: inherit;
+}
+
+.background-heading h3 a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.background-date {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.background-role {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.background-description {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 /* Respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -483,22 +609,80 @@ strong {
 
 /* Responsive design fixes */
 @media (max-width: 768px) {
+  .background-entry {
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 0.875rem;
+  }
+
+  .background-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .background-logos-pair .background-logo {
+    width: 38px;
+    height: 38px;
+  }
+
   body {
     padding: 1rem;
   }
 
-  /* Make header stack vertically on mobile */
+  /* Keep identity, contact links, and section shortcuts close together. */
   header {
-    flex-direction: column-reverse;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 80px;
+    align-items: start;
+    gap: 0.4rem 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
   }
 
-  /* Center social links on mobile */
+  .header-content {
+    display: contents;
+  }
+
+  header h1 {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+
+  .header-content > p {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .header-image {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .header-image img {
+    width: 76px;
+    height: 76px;
+  }
+
   .social-links-header {
-    flex-wrap: wrap;
-    justify-content: center;
+    grid-column: 1 / -1;
+    gap: 0.1rem 0.65rem;
+    margin: 0.35rem 0 0;
+    font-size: 0.85rem;
+  }
+
+  .social-links-header a {
+    padding: 0.3rem 0;
+  }
+
+  .section-nav {
+    grid-column: 1 / -1;
+    gap: 0.1rem 1rem;
+    font-size: 0.8rem;
   }
 
   /* Disable right-moving hover animations on mobile */
@@ -509,6 +693,10 @@ strong {
 }
 
 @media (max-width: 600px) {
+  .pub-authors, .pub-venue, .pub-takeaway {
+    font-size: 0.875rem;
+  }
+
   .publication-item {
     grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
