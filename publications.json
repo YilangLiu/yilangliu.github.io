@@ -28,6 +28,8 @@
       "selected": 1,
       "award": "",
       "links": {
+        "pdf": "https://arxiv.org/pdf/2609.27308",
+        "arxiv": "https://arxiv.org/abs/2609.27308",
         "project": "https://embodiedswe.github.io/",
         "video": "images/embodiedswe_overview.mp4"
       },
