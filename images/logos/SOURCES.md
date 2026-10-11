@@ -1,8 +1,8 @@
 # Logo sources
 
-Downloaded from official websites on September 21, 2026. Logos belong to their respective organizations.
+Downloaded from official websites on September 21, 2026, unless noted otherwise. Logos belong to their respective organizations.
 
-- **Dexmate:** https://framerusercontent.com/images/tiXvsIGEmvfi7ibvABR8o3F9rU.png (touch icon linked by https://www.dexmate.ai/)
+- **Dexmate:** https://www.dexmate.com/apple-icon.png (official touch icon linked by https://www.dexmate.com/; updated October 11, 2026).
 - **Yale:** https://www.yale.edu/sites/all/themes/yale_blue/images/favicons/apple-touch-icon-180x180.png
 - **Carnegie Mellon:** stacked SVG wordmark from https://www.cmu.edu/ (original paths).
 - **University of Cincinnati:** SVG monogram from https://www.uc.edu/ (original symbol paths, displayed in black).
